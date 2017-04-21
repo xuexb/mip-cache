@@ -1,0 +1,8 @@
+node_modules/
+/coverage/
+/.travis.yml
+/appveyor.yml
+/.babelrc
+/test/
+/release.sh
+/src/
