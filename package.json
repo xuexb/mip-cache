@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "删除MIP缓存",
   "main": "lib/index.js",
+  "bin": {
+    "mip-cache": "./bin/mip-cache"
+  },
   "scripts": {
     "check": "fecs check src/ test/ --reporter=baidu",
     "compile": "babel src/ -d lib/",
@@ -10,7 +13,8 @@
     "prepublish": "npm run compile",
     "test:watch": "npm run test -- --watch",
     "test:cov": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register -t 5000 --recursive  -R spec test/",
-    "test": "mocha --compilers js:babel-register --reporter spec --timeout 5000 --recursive test/"
+    "test": "mocha --compilers js:babel-register --reporter spec --timeout 5000 --recursive test/",
+    "release": "bash ./release.sh"
   },
   "repository": {
     "type": "git",
@@ -44,6 +48,9 @@
     "sinon-chai": "^2.9.0"
   },
   "dependencies": {
-    "babel-runtime": "6.x.x"
+    "babel-runtime": "6.x.x",
+    "cli-color": "^1.2.0",
+    "commander": "^2.9.0",
+    "ora": "^1.2.0"
   }
 }
