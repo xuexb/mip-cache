@@ -13,6 +13,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     echo "Releasing $VERSION ..."
 
+    npm run check
     npm run compile
     npm run test
 
