@@ -1,6 +1,6 @@
 {
   "name": "mip-cache",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "删除MIP缓存",
   "main": "lib/index.js",
   "bin": {
