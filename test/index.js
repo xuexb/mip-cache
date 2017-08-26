@@ -8,6 +8,8 @@ import {expect} from 'chai';
 import request from 'request';
 import sinon from 'sinon';
 
+/* eslint-disable max-nested-callbacks */
+
 describe('mip-cache', () => {
     it('check options', () => {
         expect(() => {
@@ -131,3 +133,5 @@ describe('mip-cache', () => {
         });
     }
 });
+
+/* eslint-enable max-nested-callbacks */
