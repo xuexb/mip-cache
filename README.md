@@ -93,4 +93,4 @@ mip-cache --authkey 站长平台的authkey url
 
 ## todo
 
-- [ ] 测试覆盖
+- [x] 测试覆盖

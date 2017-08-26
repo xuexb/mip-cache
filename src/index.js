@@ -33,11 +33,7 @@ export default class MipCache {
 
         let urlData = parse(url);
 
-        url = `${urlData.hostname || ''}${urlData.pathname || ''}`;
-
-        if (!url) {
-            throw new TypeError('url format is error');
-        }
+        url = `${urlData.hostname || ''}${urlData.pathname}`;
 
         return url;
     }
@@ -61,7 +57,7 @@ export default class MipCache {
                 if (error) {
                     return reject({
                         status: -1,
-                        msg: error || 'server error'
+                        msg: error
                     });
                 }
 
@@ -76,7 +72,7 @@ export default class MipCache {
                 }
 
                 // 如果有错误
-                if (body.error) {
+                if (body.status) {
                     return reject({
                         status: body.status,
                         msg: body.msg || 'server code error'
