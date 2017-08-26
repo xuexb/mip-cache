@@ -6,6 +6,8 @@ node_js:
   - '7'
   - '8'
 sudo: false
+before_script:
+  - "npm run compile"
 script:
-    - "npm run test:cov"
+  - "npm run test:cov"
 after_script: "npm install coveralls && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
