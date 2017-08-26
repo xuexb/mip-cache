@@ -9,7 +9,7 @@ import request from 'request';
 export default class MipCache {
     constructor(options = {}) {
         if (!options.authkey) {
-            throw new TypeError('options.authkey is empty');
+            throw new TypeError('options.authkey cannot be empty');
         }
 
         this.options = options;
@@ -23,8 +23,12 @@ export default class MipCache {
      * @return {string}
      */
     _parseUrl(url) {
+        if (!url) {
+            throw new TypeError('url cannot be empty');
+        }
+
         if ('string' !== typeof url) {
-            throw new TypeError('url is not string');
+            throw new TypeError('url should be a string');
         }
 
         let urlData = parse(url);
@@ -32,7 +36,7 @@ export default class MipCache {
         url = `${urlData.hostname || ''}${urlData.pathname || ''}`;
 
         if (!url) {
-            throw new TypeError('url is empty');
+            throw new TypeError('url format is error');
         }
 
         return url;
