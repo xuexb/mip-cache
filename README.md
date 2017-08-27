@@ -93,6 +93,10 @@ mip-cache --authkey 站长平台的authkey url
 
 ## 更新日志
 
+### 1.0.0
+
+- 优化测试, 使用`promise`
+
 ### 0.1.0
 
 - 优化代码和测试覆盖率

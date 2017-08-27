@@ -51,7 +51,7 @@ describe('mip-cache', () => {
         }).to.not.throw();
     });
 
-    describe('#clear', done => {
+    describe('#clear', () => {
         let app;
 
         beforeEach(() => {
@@ -66,69 +66,71 @@ describe('mip-cache', () => {
             }
         });
 
-        it('server error', done => {
+        it('server error', () => {
             sinon.stub(request, 'post').yields('error');
 
-            app.clear('http://xuexb.com').catch(err => {
+            return app.clear('http://xuexb.com').catch(err => {
                 expect(err).to.deep.equal({
                     status: -1,
                     msg: 'error'
                 });
-
-                done();
             });
         });
 
-        it('parse json error', done => {
+        it('parse json error', () => {
             sinon.stub(request, 'post').yields(null, '', '{');
 
-            app.clear('http://xuexb.com').catch(err => {
+            return app.clear('http://xuexb.com').catch(err => {
                 expect(err).to.deep.equal({
                     status: -2,
                     msg: 'parse json error'
                 });
-
-                done();
             });
         });
 
-        it('data error', done => {
+        it('data error', () => {
             sinon.stub(request, 'post').yields(null, '', JSON.stringify({
                 status: 1
             }));
 
-            app.clear('http://xuexb.com').catch(err => {
+            return app.clear('http://xuexb.com').catch(err => {
                 expect(err).to.deep.equal({
                     status: 1,
                     msg: 'server code error'
                 });
-
-                done();
             });
         });
 
-        it('zhanzhang data error', done => {
-            app.clear('http://xuexb.com').catch(err => {
+        it('zhanzhang data error', () => {
+            return app.clear('http://xuexb.com').catch(err => {
                 expect(err).to.deep.equal({
                     status: 1,
                     msg: 'auth check fail'
                 });
-
-                done();
             });
         });
     });
 
-    if (process.env.MIP_TOKEN) {
-        it('post zhanzhang.baidu.com', done => {
-            new MipCache({
-                authkey: process.env.MIP_TOKEN
+    if (process.env.MIP_CACHE_AUTHKEY) {
+        it('post zhanzhang.baidu.com', () => {
+            return new MipCache({
+                authkey: process.env.MIP_CACHE_AUTHKEY
             }).clear('https://mip.xuexb.com').then(data => {
                 expect(data).to.deep.equal({
                     status: 0,
                     msg: 'cache clean success'
                 });
-                done();
+            });
+        });
+
+        it('post zhanzhang.baidu.com is error', () => {
+            return new MipCache({
+                authkey: process.env.MIP_CACHE_AUTHKEY
+            }).clear('https://mip.xuexb.com/post/xiaowu.html').then(data => {
+                expect(data).to.deep.equal({
+                    status: 0,
+                    msg: 'cache clean success'
+                });
             });
         });
     }
