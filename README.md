@@ -91,6 +91,13 @@ mip-cache --authkey 站长平台的authkey url
 }
 ```
 
-## todo
+## 更新日志
 
-- [x] 测试覆盖
+### 0.1.0
+
+- 优化代码和测试覆盖率
+- 添加node4-node8支持
+
+### 0.0.3
+
+发布npm包
