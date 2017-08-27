@@ -1,6 +1,6 @@
 {
   "name": "mip-cache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "使用nodejs推送删除MIP数据到百度站长平台",
   "main": "lib/index.js",
   "bin": {
