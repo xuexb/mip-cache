@@ -1,7 +1,7 @@
 {
   "name": "mip-cache",
   "version": "1.0.0",
-  "description": "删除MIP缓存",
+  "description": "使用nodejs推送删除MIP数据到百度站长平台",
   "main": "lib/index.js",
   "bin": {
     "mip-cache": "./bin/mip-cache"
@@ -12,8 +12,8 @@
     "watch": "npm run compile -- --watch",
     "prepublish": "npm run compile",
     "test:watch": "npm run test -- --watch",
-    "test:cov": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register -t 5000 --recursive  -R spec test/",
-    "test": "mocha --compilers js:babel-register --reporter spec --timeout 5000 --recursive test/",
+    "test:cov": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register -t 10000 --recursive  -R spec test/",
+    "test": "mocha --compilers js:babel-register --reporter spec --timeout 10000 --recursive test/",
     "release": "bash ./release.sh"
   },
   "repository": {

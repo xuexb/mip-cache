@@ -1,6 +1,6 @@
 # mip-cache
 
-> 删除MIP缓存
+> 使用nodejs推送删除MIP数据到百度站长平台
 
 [![code style fecs](https://img.shields.io/badge/code%20style-fecs-brightgreen.svg)](https://github.com/ecomfe/fecs)
 [![Build Status](https://travis-ci.org/xuexb/mip-cache.svg?branch=master)](https://travis-ci.org/xuexb/mip-cache)
