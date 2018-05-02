@@ -16,15 +16,22 @@ $ [sudo] npm i mip-cache
 ## 使用
 
 ```js
-var Mip = require('mip-cache');
-var app = new Mip({
+var Cache = require('mip-cache');
+var app = new Cache({
     // 站长平台的授权key
     authkey: ''
 });
 
-// 推送数据
+// 推送清理数据
 // app.clear(url) => Promise
 app.clear('http://mip.xuexb.com').then(res => {
+    console.log(res);
+}).catch(err => {
+    console.error(err);
+});
+
+// 清理 HTTPS 数据
+app.clear('https://mip.xuexb.com').then(res => {
     console.log(res);
 }).catch(err => {
     console.error(err);
@@ -39,6 +46,10 @@ $ [sudo] npm i mip-cache -g
 
 # 使用命令清除
 mip-cache --authkey 站长平台的authkey url
+
+# 如
+mip-cache --authkey demokey mip.xuexb.com
+mip-cache --authkey demokey https://mip.xuexb.com
 ```
 
 ## 成功响应
@@ -92,6 +103,10 @@ mip-cache --authkey 站长平台的authkey url
 ```
 
 ## 更新日志
+
+### 1.0.2
+
+- 修复无法清理 HTTPS 链接，fix #2
 
 ### 1.0.0
 
