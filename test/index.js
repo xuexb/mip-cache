@@ -109,10 +109,19 @@ describe('mip-cache', () => {
                 });
             });
         });
+
+        it('https', () => {
+            return app.clear('https://mip.xuexb.com').catch(err => {
+                expect(err).to.deep.equal({
+                    status: 1,
+                    msg: 'auth check fail'
+                });
+            });
+        });
     });
 
     if (process.env.MIP_CACHE_AUTHKEY) {
-        it('post zhanzhang.baidu.com', () => {
+        it('https', () => {
             return new MipCache({
                 authkey: process.env.MIP_CACHE_AUTHKEY
             }).clear('https://mip.xuexb.com').then(data => {
@@ -123,10 +132,21 @@ describe('mip-cache', () => {
             });
         });
 
+        it('post zhanzhang.baidu.com', () => {
+            return new MipCache({
+                authkey: process.env.MIP_CACHE_AUTHKEY
+            }).clear('http://mip.xuexb.com').then(data => {
+                expect(data).to.deep.equal({
+                    status: 0,
+                    msg: 'cache clean success'
+                });
+            });
+        });
+
         it('post zhanzhang.baidu.com is error', () => {
             return new MipCache({
                 authkey: process.env.MIP_CACHE_AUTHKEY
-            }).clear('https://mip.xuexb.com/post/xiaowu.html').then(data => {
+            }).clear('http://mip.xuexb.com/post/xiaowu.html').then(data => {
                 expect(data).to.deep.equal({
                     status: 0,
                     msg: 'cache clean success'

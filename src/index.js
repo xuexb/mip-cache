@@ -46,10 +46,13 @@ export default class MipCache {
      * @return {Promise}
      */
     clear(url) {
-        url = this._parseUrl(url);
+        const domain = this._parseUrl(url);
+        const api = url.indexOf('https://') === 0
+            ? 'http://c.mipcdn.com/update-ping/c/s'
+            : 'http://c.mipcdn.com/update-ping/c';
 
         return new Promise((resolve, reject) => {
-            request.post(`http://mipcache.bdstatic.com/update-ping/c/${url}`, {
+            request.post(`${api}/${domain}`, {
                 form: {
                     key: this.options.authkey
                 }
